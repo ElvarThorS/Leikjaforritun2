@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
+    private const float Y_ANGLE_MIN = 5.0f;
+    private const float Y_ANGLE_MAX = 50.0f;
+
     public Transform lookAt;
     public Transform camTransform;
 
@@ -24,7 +27,9 @@ public class ThirdPersonCamera : MonoBehaviour
     private void Update()
     {
         currentX += Input.GetAxis("Mouse X");
-        currentY += Input.GetAxis("Mouse Y");
+        currentY += Input.GetAxis("Mouse Y")*-1;
+
+        currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
     }
 
     private void LateUpdate()

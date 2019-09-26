@@ -6,9 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public float WalkingSpeed = 3f;
     public float RunningSpeed = 6f;
+    
+    public Animator anim;
 
     private Rigidbody PlayerRB;
     private Vector3 movement;
+    private bool InCombat; 
+
 
     private void Start()
     {
@@ -20,6 +24,11 @@ public class PlayerController : MonoBehaviour
         
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+
+        if(Input.GetKeyDown("e"))
+            {
+                Combat();
+            }
 
         if ((Input.GetKey("w") == false) && (Input.GetKey("a") == false) && (Input.GetKey("s") == false) && (Input.GetKey("d") == false))
         {
@@ -50,5 +59,10 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         PlayerRB.MovePosition(transform.position + movement);
+    }
+
+    private void Combat()
+    {
+        anim.SetBool("Combat-Idle",true);
     }
 }

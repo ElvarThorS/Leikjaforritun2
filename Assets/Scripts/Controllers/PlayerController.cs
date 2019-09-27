@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool InCombat;
     public int AttackNr=0;
     public float ComboTimeLeft = 3f;
-    private int AttackHolder;
+    
 
 
     private void Start()
@@ -81,10 +81,9 @@ public class PlayerController : MonoBehaviour
 
     private void Combat()
     {
-        AttackHolder = 0;
+        if(AttackNr >6){AttackNr=0;}
         anim.SetInteger("AttackNr", 0);
         CombatCounter();
-        anim.SetBool("Kick", false);
         anim.SetBool("Combat-Idle", true);
         if (Input.GetKeyDown("e"))
         {

@@ -11,12 +11,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody PlayerRB;
     private Vector3 movement;
-    private bool InCombat; 
+    public bool InCombat; 
 
 
     private void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
+        InCombat = false;
     }
 
     private void FixedUpdate()
@@ -25,22 +26,35 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        if(Input.GetKeyDown("e"))
+        if(InCombat==true)
+        {
+            Combat();
+        }
+
+    
+        if(InCombat==false)
             {
-                Combat();
+               if ((Input.GetKey("w") == false) && (Input.GetKey("a") == false) && (Input.GetKey("s") == false) && (Input.GetKey("d") == false))
+                {
+                    PlayerRB.constraints = RigidbodyConstraints.FreezePositionX;
+                    PlayerRB.constraints = RigidbodyConstraints.FreezePositionZ;
+                }
+
+                else
+                {
+                  PlayerRB.constraints = RigidbodyConstraints.None;
+                  Move(moveHorizontal, moveVertical);
+                } 
             }
-
-        if ((Input.GetKey("w") == false) && (Input.GetKey("a") == false) && (Input.GetKey("s") == false) && (Input.GetKey("d") == false))
+        
+        if(Input.GetKeyDown("space"))
         {
-            PlayerRB.constraints = RigidbodyConstraints.FreezePositionX;
-            PlayerRB.constraints = RigidbodyConstraints.FreezePositionZ;
+            if(InCombat==true){InCombat=false;}
+            
+            else{InCombat=true;}
+            
         }
-
-        else
-        {
-            PlayerRB.constraints = RigidbodyConstraints.None;
-            Move(moveHorizontal, moveVertical);
-        }
+        
         
         
     }
@@ -63,6 +77,9 @@ public class PlayerController : MonoBehaviour
 
     private void Combat()
     {
+        anim.SetBool("Kick",false);
         anim.SetBool("Combat-Idle",true);
+        if(Input.GetKeyDown("e")){anim.SetBool("Kick",true);}
+
     }
 }

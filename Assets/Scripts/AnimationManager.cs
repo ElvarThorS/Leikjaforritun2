@@ -6,17 +6,29 @@ public class AnimationManager : MonoBehaviour
 {
 
     public Collider RightArmCollider;
+    public Collider LeftArmCollider;
+    public Collider RightLegCollider;
+    public Collider LeftLegCollider;
 
     private void Start()
     {
         RightArmCollider = RightArmCollider.GetComponent<CapsuleCollider>();
         RightArmCollider.enabled = false;
+
+        LeftArmCollider = LeftArmCollider.GetComponent<CapsuleCollider>();
+        LeftArmCollider.enabled = false;
+
+        RightLegCollider = RightLegCollider.GetComponent<CapsuleCollider>();
+        RightLegCollider.enabled = false;
+
+        LeftLegCollider = LeftLegCollider.GetComponent<CapsuleCollider>();
+        LeftLegCollider.enabled = false;
     }
 
 
     private void Update()
     {
-       // RightArmCollider.enabled = false;
+        RightArmCollider.enabled = false;
     }
 
     public void RightArmPunch(int s)
@@ -27,21 +39,30 @@ public class AnimationManager : MonoBehaviour
 
     public void LeftArmPunch(int s)
     {
-        Debug.Log("Shit sem gerðist: " + s + " gerðist:" + Time.time);
+        Debug.Log("Right punch" + Time.time);
+        LeftArmCollider.enabled = true;
     }
 
     public void RightLegKick(int s)
     {
-        Debug.Log("Shit sem gerðist: " + s + " gerðist:" + Time.time);
+        Debug.Log("Right punch" + Time.time);
+        RightArmCollider.enabled = true;
     }
 
     public void LeftLegKick(int s)
     {
-        Debug.Log("Shit sem gerðist: " + s + " gerðist:" + Time.time);
+        Debug.Log("Right punch" + Time.time);
+        RightArmCollider.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        other.enabled = false;
+        MeshRenderer meshRend = other.GetComponent<MeshRenderer>();
+        if(meshRend.material.color == Color.red) { meshRend.material.color = Color.white; }
+        else { meshRend.material.color = Color.red; }
+        
+
+        
+        //other.gameObject.SetActive(false);
     }
 }

@@ -60,9 +60,9 @@ public class AnimationManager : MonoBehaviour
         MeshRenderer meshRend = other.GetComponent<MeshRenderer>();
         if(meshRend.material.color == Color.red) { meshRend.material.color = Color.white; }
         else { meshRend.material.color = Color.red; }
-        
+        Debug.Log("Hit" + Time.time);
 
-        
+
         //other.gameObject.SetActive(false);
     }
 }

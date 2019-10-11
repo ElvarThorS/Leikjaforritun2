@@ -967,7 +967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb353bbd78ce0d42824e9cc36ed7f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightArmCollider: {fileID: 1982416688}
+  RightArmCollider: {fileID: 1982416689}
+  LeftArmCollider: {fileID: 2113915590}
+  RightLegCollider: {fileID: 2113915594}
+  LeftLegCollider: {fileID: 2113915592}
 --- !u!1 &1009633924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,12 +1828,6 @@ MonoBehaviour:
 --- !u!1 &1982416687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100094, guid: 320b1c2af77554f99a1658df4a6d3d5c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2113915588}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1982416688 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400094, guid: 320b1c2af77554f99a1658df4a6d3d5c,
     type: 3}
   m_PrefabInstance: {fileID: 2113915588}
   m_PrefabAsset: {fileID: 0}

@@ -29,6 +29,9 @@ public class AnimationManager : MonoBehaviour
     private void Update()
     {
         RightArmCollider.enabled = false;
+        LeftArmCollider.enabled = false;
+        RightLegCollider.enabled = false;
+        LeftLegCollider.enabled = false;
     }
 
     public void RightArmPunch(int s)
@@ -39,20 +42,20 @@ public class AnimationManager : MonoBehaviour
 
     public void LeftArmPunch(int s)
     {
-        Debug.Log("Right punch" + Time.time);
+        Debug.Log("Left punch" + Time.time);
         LeftArmCollider.enabled = true;
     }
 
     public void RightLegKick(int s)
     {
-        Debug.Log("Right punch" + Time.time);
-        RightArmCollider.enabled = true;
+        Debug.Log("Right Kick" + Time.time);
+        RightLegCollider.enabled = true;
     }
 
     public void LeftLegKick(int s)
     {
-        Debug.Log("Right punch" + Time.time);
-        RightArmCollider.enabled = true;
+        Debug.Log("Left Kick" + Time.time);
+        LeftLegCollider.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)

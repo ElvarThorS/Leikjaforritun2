@@ -10,6 +10,8 @@ public class AnimationManager : MonoBehaviour
     public Collider RightLegCollider;
     public Collider LeftLegCollider;
 
+    public EnemyManager EM;
+
     private void Start()
     {
         RightArmCollider = RightArmCollider.GetComponent<CapsuleCollider>();
@@ -23,6 +25,7 @@ public class AnimationManager : MonoBehaviour
 
         LeftLegCollider = LeftLegCollider.GetComponent<CapsuleCollider>();
         LeftLegCollider.enabled = false;
+        
     }
 
 
@@ -65,6 +68,7 @@ public class AnimationManager : MonoBehaviour
         else { meshRend.material.color = Color.red; }
         Debug.Log("Hit" + Time.time);
 
+        EM.GotHit = true;
 
         //other.gameObject.SetActive(false);
     }

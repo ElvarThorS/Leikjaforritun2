@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
         if (InCombat == false)
         {
+            anim.SetBool("Combat-Idle", false);
             if ((Input.GetKey("w") == false) && (Input.GetKey("a") == false) && (Input.GetKey("s") == false) && (Input.GetKey("d") == false))
             {
                 PlayerRB.constraints = RigidbodyConstraints.FreezePositionX;

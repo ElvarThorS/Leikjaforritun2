@@ -6,20 +6,24 @@ public class EnemyManager : MonoBehaviour
 {
 
     public float Health = 10;
-    public bool GotHit = false; 
+    public AnimationManager AM;
+    
+    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        GotHit = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GotHit == true)
+        if(AM.Hit == true)
         {
-            GotHit = false;
+            AM.Hit = false;
             Health -= 1;
         }
 

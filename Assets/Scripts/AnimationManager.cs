@@ -11,6 +11,7 @@ public class AnimationManager : MonoBehaviour
     public Collider LeftLegCollider;
 
     public EnemyManager EM;
+    public bool Hit = false;
 
     private void Start()
     {
@@ -25,6 +26,8 @@ public class AnimationManager : MonoBehaviour
 
         LeftLegCollider = LeftLegCollider.GetComponent<CapsuleCollider>();
         LeftLegCollider.enabled = false;
+
+        Hit = false;
         
     }
 
@@ -68,7 +71,7 @@ public class AnimationManager : MonoBehaviour
         else { meshRend.material.color = Color.red; }
         Debug.Log("Hit" + Time.time);
 
-        EM.GotHit = true;
+        Hit = true;
 
         //other.gameObject.SetActive(false);
     }

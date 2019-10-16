@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
         if (InCombat == false)
         {
-            anim.SetBool("Combat-Idle", false);
+            anim.SetBool("InCombat", false);
             if ((Input.GetKey("w") == false) && (Input.GetKey("a") == false) && (Input.GetKey("s") == false) && (Input.GetKey("d") == false))
             {
                 PlayerRB.constraints = RigidbodyConstraints.FreezePositionX;
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if(AttackNr >6){AttackNr=0;}
         anim.SetInteger("AttackNr", 0);
         CombatCounter();
-        anim.SetBool("Combat-Idle", true);
+        anim.SetBool("InCombat", true);
         if (Input.GetKeyDown("e"))
         {
 

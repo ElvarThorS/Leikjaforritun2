@@ -27,7 +27,6 @@ public class PlayerController2 : MonoBehaviour
             theRB.velocity = new Vector3(theRB.velocity.x, jumpForce, theRB.velocity.z);
         }*/
 
-<<<<<<< HEAD
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
 
         if (controller.isGrounded)
@@ -39,17 +38,7 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale*Time.deltaTime);
-=======
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
-
-        if(Input.GetButtonDown("Jump"))
-        {
-            moveDirection.y = jumpForce;
-        }
-
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
->>>>>>> 80a142321875d4e1582bd5602ea75234d89cb164
-        controller.Move(moveDirection*Time.deltaTime);
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 }

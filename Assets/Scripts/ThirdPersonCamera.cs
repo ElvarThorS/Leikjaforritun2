@@ -4,39 +4,37 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    private const float Y_ANGLE_MIN = 5.0f;
-    private const float Y_ANGLE_MAX = 50.0f;
+    public Transform target;
 
-    public Transform lookAt;
-    public Transform camTransform;
+    public Vector3 offset;
 
-    private Camera cam;
+    public bool useOffsetValues;
 
-    private float distance = 10.0f;
-    private float currentX = 0.0f;
-    private float currentY = 0.0f;
-    private float sensivityX = 4.0f;
-    private float sensivityY = 1.0f;
+    public float rotateSpeed;
 
     void Start()
     {
-        camTransform = transform;
-        cam = Camera.main;
+        if (!useOffsetValues)
+        {
+            offset = target.position - transform.position;
+        }
     }
 
     private void Update()
     {
-        currentX += Input.GetAxis("Mouse X");
-        currentY += Input.GetAxis("Mouse Y")*-1;
+        //Get the X position of the mouse & rotate the target
+        float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
+        target.Rotate(0, horizontal, 0);
 
-        currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
+        float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
+        target.Rotate(-vertical,0, 0);
+
+        //Move the camera based on the current rotation of the target & the original offset
+        float desiredYAngle = target.eulerAngles.y;
+        float desiredXAngle = target.eulerAngles.x;
+        Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0);
+        transform.position = target.position - (rotation * offset);
     }
 
-    private void LateUpdate()
-    {
-        Vector3 dir = new Vector3(0, 0, -distance);
-        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-        camTransform.position = lookAt.position + rotation * dir;
-        camTransform.LookAt(lookAt.position);
-    }
+
 }

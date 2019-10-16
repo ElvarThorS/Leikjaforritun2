@@ -1533,8 +1533,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d651e64106b3f48ae0737e81cfacdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAt: {fileID: 1219740455}
-  camTransform: {fileID: 1004851788}
+  target: {fileID: 1788337195}
+  offset: {x: 0, y: -5, z: 10}
+  useOffsetValues: 0
+  rotateSpeed: 5
 --- !u!1 &1015098916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,9 +2388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpForce: 5
+  jumpForce: 20
   controller: {fileID: 0}
-  gravityScale: 1
+  gravityScale: 2
 --- !u!143 &1788337191
 CharacterController:
   m_ObjectHideFlags: 0

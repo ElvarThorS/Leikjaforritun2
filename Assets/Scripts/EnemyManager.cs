@@ -21,14 +21,10 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(AM.Hit == true)
-        {
-            AM.Hit = false;
-            Health -= 1;
-        }
-
-        if(Health <= 0) { Die(); }
+        if (Health <= 0) { Die(); }
     }
+
+
 
     void Die()
     {

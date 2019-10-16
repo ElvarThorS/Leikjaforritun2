@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody PlayerRB;
     private Vector3 movement;
-    public bool InCombat;
-    public int AttackNr=0;
-    public float ComboTimeLeft = 3f;
+    private bool InCombat;
+    private int AttackNr=0;
+    private float ComboTimeLeft = 3f;
     
 
 
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
         if (InCombat == false)
         {
+            anim.SetBool("Combat-Idle", false);
             if ((Input.GetKey("w") == false) && (Input.GetKey("a") == false) && (Input.GetKey("s") == false) && (Input.GetKey("d") == false))
             {
                 PlayerRB.constraints = RigidbodyConstraints.FreezePositionX;

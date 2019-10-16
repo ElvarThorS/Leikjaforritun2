@@ -12,12 +12,16 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public float RotateSpeed;
 
+    public Transform pivot;
     void Start ()
     {
         if(!useOffsetValues)
         {
             CameraOffset = target.position - transform.position;
         }
+
+        pivot.transform.position = target.transform.position;
+        pivot.transform.parent = target.transform;
     }
 
     void Update()

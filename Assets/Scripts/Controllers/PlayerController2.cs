@@ -31,7 +31,7 @@ public class PlayerController2 : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            moveDirection.y = 0;
+            moveDirection.y = 0f;
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpForce;

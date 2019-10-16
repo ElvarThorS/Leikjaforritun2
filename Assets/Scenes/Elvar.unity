@@ -1534,9 +1534,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1788337195}
-  offset: {x: 0, y: -5, z: 10}
-  useOffsetValues: 0
-  rotateSpeed: 5
+  CameraOffset: {x: 0, y: -5, z: 10}
+  useOffsetValues: 1
+  RotateSpeed: 5
 --- !u!1 &1015098916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,9 +2388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpForce: 20
+  jumpForce: 15
   controller: {fileID: 0}
-  gravityScale: 2
+  gravityScale: 5
 --- !u!143 &1788337191
 CharacterController:
   m_ObjectHideFlags: 0

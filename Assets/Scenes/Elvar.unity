@@ -1569,6 +1569,9 @@ MonoBehaviour:
   useOffsetValues: 1
   RotateSpeed: 5
   pivot: {fileID: 185523959}
+  maxViewAngle: 60
+  minViewAngle: -35
+  invertY: 0
 --- !u!1 &1015098916
 GameObject:
   m_ObjectHideFlags: 0

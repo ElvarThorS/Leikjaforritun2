@@ -11,6 +11,8 @@ public class PlayerController2 : MonoBehaviour
 
     private Vector3 moveDirection;
     public float gravityScale;
+    public Animator Anim;
+
 
     void Start()
     {
@@ -45,5 +47,35 @@ public class PlayerController2 : MonoBehaviour
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
+
+
+        //Animation fyrir hreyfingar
+
+        Anim.SetBool("WalkingRight", false);
+        Anim.SetBool("WalkingLeft", false);
+        Anim.SetBool("WalkingBackwards", false);
+        Anim.SetBool("WalkingForward", false);
+
+
+        if (Input.GetKey("w"))
+        {
+            Anim.SetBool("WalkingForward", true);
+        }
+        if (Input.GetKey("s"))
+        {
+            Anim.SetBool("WalkingBackwards", true);
+        }
+        if (Input.GetKey("a"))
+        {
+            Anim.SetBool("WalkingLeft", true);
+        }
+        if (Input.GetKey("d"))
+        {
+            Anim.SetBool("WalkingRight", true);
+        }
+
+     
+        
+        
     }
 }

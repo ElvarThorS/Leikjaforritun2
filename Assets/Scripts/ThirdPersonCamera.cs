@@ -27,7 +27,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         pivot.transform.position = target.transform.position;
         pivot.transform.parent = target.transform;
-
+        
+        //Makes the cursor disappear when in play mode
         Cursor.lockState = CursorLockMode.Locked;
     }
 

@@ -27,8 +27,13 @@ public class PlayerController2 : MonoBehaviour
             theRB.velocity = new Vector3(theRB.velocity.x, jumpForce, theRB.velocity.z);
         }*/
 
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        float yStore = moveDirection.y;
+        moveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
+        moveDirection = moveDirection.normalized * moveSpeed;
+        moveDirection.y = yStore;
 
+        //If player is on the ground he has no gravity pulling on him and he can jump
         if (controller.isGrounded)
         {
             moveDirection.y = 0f;

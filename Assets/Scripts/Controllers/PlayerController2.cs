@@ -38,10 +38,13 @@ public class PlayerController2 : MonoBehaviour
         //If player is on the ground he has no gravity pulling on him and he can jump
         if (controller.isGrounded)
         {
+            Anim.SetBool("Jumping",false);
             moveDirection.y = 0f;
+            
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpForce;
+                Anim.SetBool("Jumping",true);
             }
         }
 

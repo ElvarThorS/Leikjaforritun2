@@ -11,6 +11,8 @@ public class PlayerController2 : MonoBehaviour
 
     private Vector3 moveDirection;
     public float gravityScale;
+    public Animator Anim;
+
 
     void Start()
     {
@@ -36,14 +38,47 @@ public class PlayerController2 : MonoBehaviour
         //If player is on the ground he has no gravity pulling on him and he can jump
         if (controller.isGrounded)
         {
+            Anim.SetBool("Jumping",false);
             moveDirection.y = 0f;
+            
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpForce;
+                Anim.SetBool("Jumping",true);
             }
         }
             
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
+
+
+        //Animation fyrir hreyfingar
+
+        Anim.SetBool("WalkingRight", false);
+        Anim.SetBool("WalkingLeft", false);
+        Anim.SetBool("WalkingBackwards", false);
+        Anim.SetBool("WalkingForward", false);
+
+
+        if (Input.GetKey("w"))
+        {
+            Anim.SetBool("WalkingForward", true);
+        }
+        if (Input.GetKey("s"))
+        {
+            Anim.SetBool("WalkingBackwards", true);
+        }
+        if (Input.GetKey("a"))
+        {
+            Anim.SetBool("WalkingLeft", true);
+        }
+        if (Input.GetKey("d"))
+        {
+            Anim.SetBool("WalkingRight", true);
+        }
+
+     
+        
+        
     }
 }

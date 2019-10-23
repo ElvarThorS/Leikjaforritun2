@@ -67,16 +67,20 @@ public class AnimationManager : MonoBehaviour
     //Fallið sem er kallað á þegar attack hjá spilaranum hittir eitthvað
     private void OnTriggerEnter(Collider other)
     {
-        MeshRenderer meshRend = other.GetComponent<MeshRenderer>();
-        if(meshRend.material.color == Color.red) { meshRend.material.color = Color.white; }
-        else { meshRend.material.color = Color.red; }
-        Debug.Log("Hit" + Time.time);
+        if(other.gameObject.tag == "Enemy")
+        {
+            MeshRenderer meshRend = other.GetComponent<MeshRenderer>();
+            if(meshRend.material.color == Color.red) { meshRend.material.color = Color.white; }
+            else { meshRend.material.color = Color.red; }
+            Debug.Log("Hit" + Time.time);
 
-        EnemyManager EM = other.GetComponent<EnemyManager>();
-        EM.Health -= 1;
+            EnemyManager EM = other.GetComponent<EnemyManager>();
+            EM.Health -= 1;
+            Hit = true;
 
-        Hit = true;
+                //other.gameObject.SetActive(false);
+        }
 
-        //other.gameObject.SetActive(false);
+        
     }
 }

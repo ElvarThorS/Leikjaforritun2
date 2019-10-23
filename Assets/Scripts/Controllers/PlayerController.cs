@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float RunningSpeed = 6f;
 
     public Animator anim;
+    public InventoryScript inventory;
 
     private Rigidbody PlayerRB;
     private Vector3 movement;
@@ -102,5 +104,26 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("e")){ComboTimeLeft = 3f;}
     }
 
-    
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+
+        Debug.Log("collider hit");
+        InventoryItem item = hit.gameObject.GetComponent<InventoryItem>();
+        if (item != null)
+        {
+            inventory.AddItem(item);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collision enter");
+        InventoryItem item = collision.gameObject.GetComponent<InventoryItem>();
+        if(item != null)
+        {
+            inventory.AddItem(item);
+        }
+    }
+
 }

@@ -12,7 +12,10 @@ public class PlayerController2 : MonoBehaviour
     private Vector3 moveDirection;
     public float gravityScale;
     public Animator Anim;
+    public Transform pivot;
+    public float rotateSpeed;
 
+    public GameObject playerModel;
 
     void Start()
     {
@@ -38,22 +41,29 @@ public class PlayerController2 : MonoBehaviour
         //If player is on the ground he has no gravity pulling on him and he can jump
         if (controller.isGrounded)
         {
-            Anim.SetBool("Jumping",false);
+            
             moveDirection.y = 0f;
             
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpForce;
-                Anim.SetBool("Jumping",true);
+                
             }
         }
             
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
 
+        //Move the player in different directions based on camera look direction
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
+            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+        }
 
         //Animation fyrir hreyfingar
-
+        /*
         Anim.SetBool("WalkingRight", false);
         Anim.SetBool("WalkingLeft", false);
         Anim.SetBool("WalkingBackwards", false);
@@ -75,10 +85,10 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey("d"))
         {
             Anim.SetBool("WalkingRight", true);
-        }
+        } */
 
-     
-        
-        
+        Anim.SetBool("isGrounded", controller.isGrounded);
+
+
     }
 }

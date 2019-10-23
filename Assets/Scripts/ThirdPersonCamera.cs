@@ -26,7 +26,8 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
         pivot.transform.position = target.transform.position;
-        pivot.transform.parent = target.transform;
+        //pivot.transform.parent = target.transform;
+        pivot.transform.parent = null;
         
         //Makes the cursor disappear when in play mode
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,9 +35,12 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void LateUpdate()
     {
+
+        pivot.transform.position = target.transform.position;
+
         //Get the X position of the mouse & rotate the target
         float horizontal = Input.GetAxis("Mouse X") * RotateSpeed;
-        target.Rotate(0, horizontal, 0);
+        pivot.Rotate(0, horizontal, 0);
 
         //Get the Y position of the mouse & rotate the pivot
         float vertical = Input.GetAxis("Mouse Y") * RotateSpeed;
@@ -60,7 +64,7 @@ public class ThirdPersonCamera : MonoBehaviour
             pivot.rotation = Quaternion.Euler(360f+minViewAngle, 0, 0);
         }
 
-        float desiredYAngle = target.eulerAngles.y;
+        float desiredYAngle = pivot.eulerAngles.y;
         float desiredXAngle = pivot.eulerAngles.x;
         Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0);
         transform.position = target.position - (rotation * CameraOffset);

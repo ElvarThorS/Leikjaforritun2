@@ -148,6 +148,12 @@ Transform:
   m_Father: {fileID: 1581228556}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!1 &138889204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100100, guid: 320b1c2af77554f99a1658df4a6d3d5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 209277323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &141463691
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +279,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 37768f136dc4bd14e8465e4e993520e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
 --- !u!1 &446239305
@@ -321,6 +331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  target: {fileID: 0}
+  agent: {fileID: 0}
 --- !u!54 &446239308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1803,6 +1815,10 @@ MonoBehaviour:
   jumpForce: 15
   controller: {fileID: 1788337191}
   gravityScale: 5
+  Anim: {fileID: 0}
+  pivot: {fileID: 0}
+  rotateSpeed: 0
+  playerModel: {fileID: 0}
 --- !u!143 &1788337191
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1948,6 +1964,16 @@ MonoBehaviour:
   jumpForce: 15
   controller: {fileID: 0}
   gravityScale: 5
+  Anim: {fileID: 1828675099}
+  pivot: {fileID: 185523959}
+  rotateSpeed: 10
+  playerModel: {fileID: 138889204}
+--- !u!95 &1828675099 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 320b1c2af77554f99a1658df4a6d3d5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 209277323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1828675100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400096, guid: 320b1c2af77554f99a1658df4a6d3d5c,

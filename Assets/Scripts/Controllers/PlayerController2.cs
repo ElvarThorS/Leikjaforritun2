@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController2 : MonoBehaviour
 {
     public float moveSpeed;
+    public float walkSpeed;
+    public float sprintSpeed;
     //public Rigidbody theRB;
     public float jumpForce;
     public CharacterController controller;
@@ -50,7 +52,16 @@ public class PlayerController2 : MonoBehaviour
                 
             }
         }
-            
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+        {
+            moveSpeed = sprintSpeed;
+            Anim.SetBool("isSprinting", true);
+        }
+        if (Input.GetKey(KeyCode.LeftShift) == false || Input.GetKey(KeyCode.W) == false)
+        {
+            moveSpeed = walkSpeed;
+            Anim.SetBool("isSprinting", false);
+        }
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
 

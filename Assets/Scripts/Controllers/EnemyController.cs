@@ -10,17 +10,20 @@ public class EnemyController : MonoBehaviour
     public Transform target;
     public NavMeshAgent agent;
 
-    public int health;
+    public int health = 2;
     public GameObject enemy;
+    public Animator anim;
 
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        //anim = GetComponent<Animator>();
     }
 
     void Update()
     {
+
         if (health <= 0)
         {
             Destroy(enemy);
@@ -31,14 +34,20 @@ public class EnemyController : MonoBehaviour
 
         if(distance <= lookRadius)
         {
+            anim.SetBool("Running", true);
             agent.SetDestination(target.position);
+            Debug.Log("yeet");
+            
            
             if (distance <= agent.stoppingDistance)
             {
+                anim.SetBool("Running", false);
+                anim.SetBool("Attack", true);
                 //Attack the target
                 FaceTarget();
             }
         }
+        anim.SetBool("Attack", false);
     }
     void FaceTarget ()
     {

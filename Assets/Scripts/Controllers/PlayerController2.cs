@@ -63,7 +63,7 @@ public class PlayerController2 : MonoBehaviour
         }
 
         //Animation fyrir hreyfingar
-        /*
+        
         Anim.SetBool("WalkingRight", false);
         Anim.SetBool("WalkingLeft", false);
         Anim.SetBool("WalkingBackwards", false);
@@ -85,7 +85,7 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey("d"))
         {
             Anim.SetBool("WalkingRight", true);
-        } */
+        } 
 
         Anim.SetBool("isGrounded", controller.isGrounded);
 

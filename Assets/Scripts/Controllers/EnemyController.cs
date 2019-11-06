@@ -10,6 +10,9 @@ public class EnemyController : MonoBehaviour
     public Transform target;
     public NavMeshAgent agent;
 
+    public int health;
+    public GameObject enemy;
+
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -18,6 +21,12 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0)
+        {
+            Destroy(enemy);
+        }
+
+
         float distance = Vector3.Distance(target.position, transform.position);
 
         if(distance <= lookRadius)
@@ -42,4 +51,5 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
+
 }

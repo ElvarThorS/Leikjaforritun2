@@ -69,6 +69,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: Attacking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -261,7 +267,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackNr
     m_EventTreshold: 5
   - m_ConditionMode: 1
-    m_ConditionEvent: InCombat
+    m_ConditionEvent: Attacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102046584578971220}
@@ -398,7 +404,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackNr
     m_EventTreshold: 7
   - m_ConditionMode: 1
-    m_ConditionEvent: InCombat
+    m_ConditionEvent: Attacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102141893343967716}
@@ -451,7 +457,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackNr
     m_EventTreshold: 3
   - m_ConditionMode: 1
-    m_ConditionEvent: InCombat
+    m_ConditionEvent: Attacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102333077291066070}
@@ -662,12 +668,12 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: InCombat
-    m_EventTreshold: 2
   - m_ConditionMode: 6
     m_ConditionEvent: AttackNr
     m_EventTreshold: 2
+  - m_ConditionMode: 1
+    m_ConditionEvent: Attacking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102696152381753150}
   m_Solo: 0
@@ -1146,7 +1152,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackNr
     m_EventTreshold: 1
   - m_ConditionMode: 1
-    m_ConditionEvent: InCombat
+    m_ConditionEvent: Attacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102882995994097770}
@@ -1305,7 +1311,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackNr
     m_EventTreshold: 4
   - m_ConditionMode: 1
-    m_ConditionEvent: InCombat
+    m_ConditionEvent: Attacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102847388344477456}
@@ -1392,7 +1398,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackNr
     m_EventTreshold: 6
   - m_ConditionMode: 1
-    m_ConditionEvent: InCombat
+    m_ConditionEvent: Attacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102891519011577632}
@@ -1760,7 +1766,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Unarmed-Attack-Kick-R1
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101954822494282940}
@@ -1904,7 +1910,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Unarmed-Jump
-  m_Speed: 0.1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101440112625890282}

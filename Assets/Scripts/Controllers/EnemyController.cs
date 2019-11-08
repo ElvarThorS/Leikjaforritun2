@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public int health = 2;
     public GameObject enemy;
     public Animator anim;
+    public float TBA = 1.5f;
 
     void Start()
     {
@@ -29,25 +30,30 @@ public class EnemyController : MonoBehaviour
             Destroy(enemy);
         }
 
+        
 
         float distance = Vector3.Distance(target.position, transform.position);
 
         if(distance <= lookRadius)
         {
-            anim.SetBool("Running", true);
-            agent.SetDestination(target.position);
-            Debug.Log("yeet");
             
-           
+            agent.SetDestination(target.position);
+            //Debug.Log("yeet");
+            
+            anim.SetBool("Running", true);
+
+
+
             if (distance <= agent.stoppingDistance)
             {
                 anim.SetBool("Running", false);
-                anim.SetBool("Attack", true);
-                //Attack the target
+                Attack();
                 FaceTarget();
+                
             }
+            if (distance > agent.stoppingDistance) { anim.SetBool("Attack", false); }
         }
-        anim.SetBool("Attack", false);
+        
     }
     void FaceTarget ()
     {
@@ -59,6 +65,24 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    void Attack()
+    {
+        //Time Between Attacks
+        //float TBA = 1.5f;
+        
+        TBA -= Time.deltaTime;
+
+        if(TBA <= 0)
+        {
+            anim.SetBool("Attack", true);
+            TBA = 1.5f;
+            
+        }
+        
+        //anim.SetBool("Attack", false);
+
     }
 
 }

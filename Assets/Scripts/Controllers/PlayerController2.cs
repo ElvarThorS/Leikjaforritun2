@@ -11,7 +11,9 @@ public class PlayerController2 : MonoBehaviour
     public float jumpForce;
     public CharacterController controller;
 
-
+    int noOfClicks = 0;
+    float lastClickedTime = 0;
+    float maxComboDelay = 1;
 
     private Vector3 moveDirection;
     public float gravityScale;
@@ -54,6 +56,25 @@ public class PlayerController2 : MonoBehaviour
                 
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Debug.Log("OnClick");
+            OnClick();
+            
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Anim.SetBool("Attacking", false);
+        }
+
+        if (Time.time - lastClickedTime > maxComboDelay || noOfClicks >=8 )
+        {
+            noOfClicks = 0;
+            Anim.SetBool("Attacking", false);
+        }
+
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
             moveSpeed = sprintSpeed;
@@ -103,5 +124,20 @@ public class PlayerController2 : MonoBehaviour
         Anim.SetBool("isGrounded", controller.isGrounded);
 
 
+    }
+
+    void OnClick()
+    {
+        //Record time of last button click
+        lastClickedTime = Time.time;
+        noOfClicks++;
+        Anim.SetBool("Attacking", true);
+        if (noOfClicks >= 1 && noOfClicks <= 7)
+        {
+            Anim.SetInteger("AttackNr", noOfClicks);
+            
+        }
+        //limit/clamp no of clicks between 0 and 3 because you have combo for 3 clicks
+        noOfClicks = Mathf.Clamp(noOfClicks, 0, 8);
     }
 }

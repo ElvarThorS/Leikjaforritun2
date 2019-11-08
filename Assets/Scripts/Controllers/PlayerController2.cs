@@ -11,6 +11,8 @@ public class PlayerController2 : MonoBehaviour
     public float jumpForce;
     public CharacterController controller;
 
+
+
     private Vector3 moveDirection;
     public float gravityScale;
     public Animator Anim;

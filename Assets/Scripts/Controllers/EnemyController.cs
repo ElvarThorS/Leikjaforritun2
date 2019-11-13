@@ -13,16 +13,19 @@ public class EnemyController : MonoBehaviour
     public int health = 2;
     public GameObject enemy;
     public Animator anim;
+    public float TBA = 1.5f;
+    public Collider HitCollider;
 
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        //anim = GetComponent<Animator>();
+        HitCollider = HitCollider.GetComponent<CapsuleCollider>();
     }
 
     void Update()
     {
+        //HitCollider.enabled = false;
 
         if (health <= 0)
         {
@@ -30,26 +33,31 @@ public class EnemyController : MonoBehaviour
         }
 
 
+
         float distance = Vector3.Distance(target.position, transform.position);
 
-        if(distance <= lookRadius)
+        if (distance <= lookRadius)
         {
-            anim.SetBool("Running", true);
+
             agent.SetDestination(target.position);
-            Debug.Log("yeet");
-            
-           
+            //Debug.Log("yeet");
+
+            anim.SetBool("Running", true);
+
+
+
             if (distance <= agent.stoppingDistance)
             {
                 anim.SetBool("Running", false);
-                anim.SetBool("Attack", true);
-                //Attack the target
+                Attack();
                 FaceTarget();
+
             }
+            if (distance > agent.stoppingDistance) { anim.SetBool("Attack", false); }
         }
-        anim.SetBool("Attack", false);
+
     }
-    void FaceTarget ()
+    void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -61,4 +69,39 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
+    void Attack()
+    {
+        //Time Between Attacks
+        //float TBA = 1.5f;
+
+        //TBA -= Time.deltaTime;
+        /*
+        if (TBA <= 0)
+        {
+            anim.SetBool("Attack", true);
+            TBA = 1.5f;
+
+        }
+        */
+        anim.SetBool("Attack", true);
+
+    }
+
+    public void AttackEvent()
+    {
+        HitCollider.enabled = true;
+        Debug.Log("animation event");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            PlayerController2 PM = other.gameObject.GetComponent<PlayerController2>();
+            PM.Health -= 1;
+        }
+         
+        
+
+    }
 }

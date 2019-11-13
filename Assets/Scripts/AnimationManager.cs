@@ -42,39 +42,37 @@ public class AnimationManager : MonoBehaviour
 
     public void RightArmPunch(int s)
     {
-        Debug.Log("Right punch" + Time.time);
+        // Debug.Log("Right punch" + Time.time);
         RightArmCollider.enabled = true;
     }
 
     public void LeftArmPunch(int s)
     {
-        Debug.Log("Left punch" + Time.time);
+        //Debug.Log("Left punch" + Time.time);
         LeftArmCollider.enabled = true;
     }
 
     public void RightLegKick(int s)
     {
-        Debug.Log("Right Kick" + Time.time);
+        //Debug.Log("Right Kick" + Time.time);
         RightLegCollider.enabled = true;
     }
 
     public void LeftLegKick(int s)
     {
-        Debug.Log("Left Kick" + Time.time);
+        //Debug.Log("Left Kick" + Time.time);
         LeftLegCollider.enabled = true;
     }
     
     //Fallið sem er kallað á þegar attack hjá spilaranum hittir eitthvað
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+     
+        if (other.gameObject.tag == "Enemy")
         {
-            MeshRenderer meshRend = other.GetComponent<MeshRenderer>();
-            if(meshRend.material.color == Color.red) { meshRend.material.color = Color.white; }
-            else { meshRend.material.color = Color.red; }
             Debug.Log("Hit" + Time.time);
 
-            EnemyManager EM = other.GetComponent<EnemyManager>();
+            EM = other.GetComponent<EnemyManager>();
             EM.Health -= 1;
             Hit = true;
 

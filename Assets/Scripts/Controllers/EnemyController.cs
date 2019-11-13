@@ -20,12 +20,12 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        HitCollider = GetComponent<CapsuleCollider>();
+        HitCollider = HitCollider.GetComponent<CapsuleCollider>();
     }
 
     void Update()
     {
-        HitCollider.enabled = false;
+        //HitCollider.enabled = false;
 
         if (health <= 0)
         {
@@ -90,14 +90,18 @@ public class EnemyController : MonoBehaviour
     public void AttackEvent()
     {
         HitCollider.enabled = true;
+        Debug.Log("animation event");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            Debug.Log("jdjdjdjdjdjdjd");
+            PlayerController2 PM = other.gameObject.GetComponent<PlayerController2>();
+            PM.Health -= 1;
         }
+         
+        
 
     }
 }

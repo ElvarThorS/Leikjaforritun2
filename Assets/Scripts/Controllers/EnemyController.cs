@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     public float TBA = 1.5f;
     public Collider HitCollider;
 
+    public bool isPlayerDead = false;
+
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -48,9 +50,17 @@ public class EnemyController : MonoBehaviour
 
             if (distance <= agent.stoppingDistance)
             {
-                anim.SetBool("Running", false);
-                Attack();
-                FaceTarget();
+                if(isPlayerDead == false)
+                {
+                    anim.SetBool("Running", false);
+                    Attack();
+                    FaceTarget();
+                }
+
+                if(isPlayerDead == true)
+                {
+                    anim.SetBool("isPlayerDead", true);
+                }
 
             }
             if (distance > agent.stoppingDistance) { anim.SetBool("Attack", false); }
@@ -90,7 +100,7 @@ public class EnemyController : MonoBehaviour
     public void AttackEvent()
     {
         HitCollider.enabled = true;
-        Debug.Log("animation event");
+        //Debug.Log("animation event");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -99,6 +109,10 @@ public class EnemyController : MonoBehaviour
         {
             PlayerController2 PM = other.gameObject.GetComponent<PlayerController2>();
             PM.Health -= 1;
+            if(PM.Health <=0)
+            {
+                isPlayerDead = true;
+            }
         }
          
         

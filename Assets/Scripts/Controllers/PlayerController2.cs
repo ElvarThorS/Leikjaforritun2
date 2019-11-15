@@ -157,7 +157,7 @@ public class PlayerController2 : MonoBehaviour
 
     private void DeadEvent()
     {
-        Debug.Log("Deded");
+        
         Anim.speed = 0;
     }
 }

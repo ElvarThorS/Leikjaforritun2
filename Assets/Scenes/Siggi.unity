@@ -669,10 +669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24abd80c8fd9ef94f8e3ed5c887ca4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 1981625110}
-  FollowSpeed: 0.1
-  Offset: {x: 0, y: 3.3, z: -3.59}
-  CameraSwitch: 0
+  CameraTarget: {fileID: 0}
+  MaxViewDistance: 15
+  MinViewDistance: 1
+  ZoomRate: 20
+  cameraTargetHeight: 1
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 133619495338382343, guid: bb30ce841d54c7043a3aa80279c072c9,
         type: 3}
       propertyPath: Health
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 133619496647239838, guid: bb30ce841d54c7043a3aa80279c072c9,
         type: 3}
@@ -875,7 +876,7 @@ PrefabInstance:
     - target: {fileID: 133619496647239838, guid: bb30ce841d54c7043a3aa80279c072c9,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 133619495586595390, guid: bb30ce841d54c7043a3aa80279c072c9,
         type: 3}
@@ -1281,8 +1282,6 @@ MonoBehaviour:
   LeftArmCollider: {fileID: 2113915590}
   RightLegCollider: {fileID: 2113915594}
   LeftLegCollider: {fileID: 2113915592}
-  EM: {fileID: 295830806}
-  Hit: 0
 --- !u!114 &909470527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2465,10 +2464,10 @@ MonoBehaviour:
   target: {fileID: 1981625110}
   agent: {fileID: 1904169054}
   health: 2
-  enemy: {fileID: 1904169052}
   anim: {fileID: 1904169057}
   TBA: 1.5
   HitCollider: {fileID: 2134583766}
+  isPlayerDead: 0
 --- !u!195 &1904169054
 NavMeshAgent:
   m_ObjectHideFlags: 0

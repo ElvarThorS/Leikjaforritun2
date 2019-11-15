@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
 
     public int health = 2;
-    public GameObject enemy;
+    
     public Animator anim;
     public float TBA = 1.5f;
     public Collider HitCollider;
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(enemy);
+            //deyr
         }
 
 
@@ -59,7 +59,9 @@ public class EnemyController : MonoBehaviour
 
                 if(isPlayerDead == true)
                 {
+                    anim.SetBool("Attack", false);
                     anim.SetBool("isPlayerDead", true);
+                    
                 }
 
             }
@@ -103,6 +105,11 @@ public class EnemyController : MonoBehaviour
         //Debug.Log("animation event");
     }
 
+    public void StartEatingEvent()
+        { anim.SetBool("StartEating", true); }
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
@@ -115,7 +122,6 @@ public class EnemyController : MonoBehaviour
             }
         }
          
-        
-
     }
+    
 }

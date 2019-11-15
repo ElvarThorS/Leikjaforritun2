@@ -31,43 +31,44 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
-            //deyr
+            anim.SetBool("Die", true);
         }
 
 
-
-        float distance = Vector3.Distance(target.position, transform.position);
-
-        if (distance <= lookRadius)
+        if (health > 0)
         {
+            float distance = Vector3.Distance(target.position, transform.position);
 
-            agent.SetDestination(target.position);
-            //Debug.Log("yeet");
-
-            anim.SetBool("Running", true);
-
-
-
-            if (distance <= agent.stoppingDistance)
+            if (distance <= lookRadius)
             {
-                if(isPlayerDead == false)
-                {
-                    anim.SetBool("Running", false);
-                    Attack();
-                    FaceTarget();
-                }
 
-                if(isPlayerDead == true)
-                {
-                    anim.SetBool("Attack", false);
-                    anim.SetBool("isPlayerDead", true);
-                    
-                }
+                agent.SetDestination(target.position);
+                //Debug.Log("yeet");
 
+                anim.SetBool("Running", true);
+
+
+
+                if (distance <= agent.stoppingDistance)
+                {
+                    if (isPlayerDead == false)
+                    {
+                        anim.SetBool("Running", false);
+                        Attack();
+                        FaceTarget();
+                    }
+
+                    if (isPlayerDead == true)
+                    {
+                        anim.SetBool("Attack", false);
+                        anim.SetBool("isPlayerDead", true);
+
+                    }
+
+                }
+                if (distance > agent.stoppingDistance) { anim.SetBool("Attack", false); }
             }
-            if (distance > agent.stoppingDistance) { anim.SetBool("Attack", false); }
         }
-
     }
     void FaceTarget()
     {
@@ -107,6 +108,9 @@ public class EnemyController : MonoBehaviour
 
     public void StartEatingEvent()
         { anim.SetBool("StartEating", true); }
+
+    public void EnemyDeadEvent()
+    { anim.speed = 0; }
 
 
 

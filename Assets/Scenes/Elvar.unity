@@ -246,10 +246,10 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 446239310}
   health: 0
-  enemy: {fileID: 0}
   anim: {fileID: 0}
   TBA: 1.5
   HitCollider: {fileID: 0}
+  isPlayerDead: 0
 --- !u!54 &446239308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 727114988}
   - component: {fileID: 727114987}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamaging: 1
-  damage: 10
+  damage: 50
 --- !u!1 &893331305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraTarget: {fileID: 685814542}
+  Player: {fileID: 1414588097}
   MaxViewDistance: 8
   MinViewDistance: 3
   ZoomRate: 20
@@ -1876,9 +1877,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1414588097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147ec7eec06602e46a97045e02a352a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e5f54cbcae0b384da1f7b6fc51b06ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitpoint: 150
+  player: {fileID: 1414588097}
   currentHealtbar: {fileID: 1770460408}
   ratioText: {fileID: 1870815702}
 --- !u!1001 &1535185344

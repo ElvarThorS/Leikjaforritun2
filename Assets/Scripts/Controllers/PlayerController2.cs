@@ -37,8 +37,14 @@ public class PlayerController2 : MonoBehaviour
         if(isDead == true)
         {
             Anim.SetBool("isDead", true);
+<<<<<<< HEAD
             //Anim.speed = 0;
+=======
+            
+>>>>>>> 0a8c3f1b15479d99afb16d18e6f7e38647ef6b41
         }
+
+        
 
         if (isDead == false)
         {
@@ -148,7 +154,13 @@ public class PlayerController2 : MonoBehaviour
             noOfClicks = Mathf.Clamp(noOfClicks, 0, 8);
         }
 
+        
+
     }
 
-    
+    private void DeadEvent()
+    {
+        
+        Anim.speed = 0;
+    }
 }

@@ -7,7 +7,6 @@ public class PlayerController2 : MonoBehaviour
     public float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-    //public Rigidbody theRB;
     public float jumpForce;
     public CharacterController controller;
 
@@ -22,7 +21,7 @@ public class PlayerController2 : MonoBehaviour
     public float rotateSpeed;
     public float Health = 10;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     public GameObject playerModel;
 
@@ -38,7 +37,6 @@ public class PlayerController2 : MonoBehaviour
         if(isDead == true)
         {
             Anim.SetBool("isDead", true);
-            
         }
 
         

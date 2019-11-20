@@ -4,6 +4,8 @@ using System.Collections;
 public class CameraScript : MonoBehaviour
 {
     public Transform CameraTarget;
+    public GameObject Player;
+    private PlayerController2 PC;
     private float x = 0.0f;
     private float y = 0.0f;
 
@@ -41,6 +43,8 @@ public class CameraScript : MonoBehaviour
 
         //Makes the cursor disappear when in play mode
         Cursor.lockState = CursorLockMode.Locked;
+
+        PC = Player.GetComponent<PlayerController2>();
     }
 
     // Update is called once per frame
@@ -93,7 +97,7 @@ public class CameraScript : MonoBehaviour
 
         float cameraX = transform.rotation.x;
         //checks if right mouse button is pushed
-        if (yes == true)
+        if (yes == true && PC.isDead == false)
         {
             //sets CHARACTERS x rotation to match cameras x rotation
             CameraTarget.eulerAngles = new Vector3(cameraX, transform.eulerAngles.y, transform.eulerAngles.z);

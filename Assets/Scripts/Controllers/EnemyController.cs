@@ -11,10 +11,12 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
 
     public int health = 2;
-    public GameObject enemy;
+    
     public Animator anim;
     public float TBA = 1.5f;
     public Collider HitCollider;
+
+    public bool isPlayerDead = false;
 
     void Start()
     {
@@ -29,33 +31,44 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(enemy);
+            anim.SetBool("Die", true);
         }
 
 
-
-        float distance = Vector3.Distance(target.position, transform.position);
-
-        if (distance <= lookRadius)
+        if (health > 0)
         {
+            float distance = Vector3.Distance(target.position, transform.position);
 
-            agent.SetDestination(target.position);
-            //Debug.Log("yeet");
-
-            anim.SetBool("Running", true);
-
-
-
-            if (distance <= agent.stoppingDistance)
+            if (distance <= lookRadius)
             {
-                anim.SetBool("Running", false);
-                Attack();
-                FaceTarget();
 
+                agent.SetDestination(target.position);
+                //Debug.Log("yeet");
+
+                anim.SetBool("Running", true);
+
+
+
+                if (distance <= agent.stoppingDistance)
+                {
+                    if (isPlayerDead == false)
+                    {
+                        anim.SetBool("Running", false);
+                        Attack();
+                        FaceTarget();
+                    }
+
+                    if (isPlayerDead == true)
+                    {
+                        anim.SetBool("Attack", false);
+                        anim.SetBool("isPlayerDead", true);
+
+                    }
+
+                }
+                if (distance > agent.stoppingDistance) { anim.SetBool("Attack", false); }
             }
-            if (distance > agent.stoppingDistance) { anim.SetBool("Attack", false); }
         }
-
     }
     void FaceTarget()
     {
@@ -90,8 +103,16 @@ public class EnemyController : MonoBehaviour
     public void AttackEvent()
     {
         HitCollider.enabled = true;
-        Debug.Log("animation event");
+        //Debug.Log("animation event");
     }
+
+    public void StartEatingEvent()
+        { anim.SetBool("StartEating", true); }
+
+    public void EnemyDeadEvent()
+    { anim.speed = 0; }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -99,9 +120,12 @@ public class EnemyController : MonoBehaviour
         {
             PlayerController2 PM = other.gameObject.GetComponent<PlayerController2>();
             PM.Health -= 1;
+            if(PM.Health <=0)
+            {
+                isPlayerDead = true;
+            }
         }
          
-        
-
     }
+    
 }

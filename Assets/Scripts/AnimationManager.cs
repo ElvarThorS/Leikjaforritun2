@@ -10,8 +10,8 @@ public class AnimationManager : MonoBehaviour
     public Collider RightLegCollider;
     public Collider LeftLegCollider;
 
-    public EnemyManager EM;
-    public bool Hit = false;
+    
+   
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class AnimationManager : MonoBehaviour
         LeftLegCollider = LeftLegCollider.GetComponent<CapsuleCollider>();
         LeftLegCollider.enabled = false;
 
-        Hit = false;
+      
         
     }
 
@@ -67,14 +67,13 @@ public class AnimationManager : MonoBehaviour
     //Fallið sem er kallað á þegar attack hjá spilaranum hittir eitthvað
     private void OnTriggerEnter(Collider other)
     {
-     
+        Debug.Log("Hithhhh");
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("Hit" + Time.time);
+            Debug.Log("Hit enemy");
 
-            EM = other.GetComponent<EnemyManager>();
-            EM.Health -= 1;
-            Hit = true;
+            EnemyController EC = other.gameObject.GetComponent<EnemyController>();
+            EC.health -= 1;
 
                 //other.gameObject.SetActive(false);
         }

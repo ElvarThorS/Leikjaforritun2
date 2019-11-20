@@ -63,21 +63,38 @@ public class AnimationManager : MonoBehaviour
         //Debug.Log("Left Kick" + Time.time);
         LeftLegCollider.enabled = true;
     }
-    
+
     //Fallið sem er kallað á þegar attack hjá spilaranum hittir eitthvað
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hithhhh");
+        other.gameObject.SetActive(false);
+    }
+        
+
+            
+
+            
+        
+        
+        
+    
+
+    /*
+     * 
+     *     private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger event player");
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("Hit enemy");
+            Debug.Log("player Hit enemy");
 
             EnemyController EC = other.gameObject.GetComponent<EnemyController>();
             EC.health -= 1;
 
                 //other.gameObject.SetActive(false);
         }
-
+        
         
     }
+    */
 }

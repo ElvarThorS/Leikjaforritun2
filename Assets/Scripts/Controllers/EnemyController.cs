@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
         if (health > 0)
         {
             float distance = Vector3.Distance(target.position, transform.position);
+            anim.SetBool("Running", false);
 
             if (distance <= lookRadius)
             {
@@ -116,7 +117,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger Event Enemy");
         if(other.gameObject.tag == "Player")
+            Debug.Log("Enemy hits player");
         {
             PlayerController2 PM = other.gameObject.GetComponent<PlayerController2>();
             PM.Health -= 1;

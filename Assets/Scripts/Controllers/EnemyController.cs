@@ -119,11 +119,12 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Trigger Event Enemy");
         if(other.gameObject.tag == "Player")
-            Debug.Log("Enemy hits player");
+            
         {
-            PlayerController2 PM = other.gameObject.GetComponent<PlayerController2>();
-            PM.Health -= 1;
-            if(PM.Health <=0)
+            Debug.Log("Enemy hits player");
+            HealthSystem HS = other.gameObject.GetComponent<HealthSystem>();
+            HS.hitpoint -= 10;
+            if(HS.hitpoint <=0)
             {
                 isPlayerDead = true;
             }

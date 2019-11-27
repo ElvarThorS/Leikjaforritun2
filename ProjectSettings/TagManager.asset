@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Fist
   - Leg
+  - Ground
   layers:
   - Default
   - TransparentFX

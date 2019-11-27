@@ -19,7 +19,6 @@ public class PlayerController2 : MonoBehaviour
     public Animator Anim;
     public Transform pivot;
     public float rotateSpeed;
-    public float Health = 10;
 
     public bool isDead = false;
 
@@ -43,8 +42,6 @@ public class PlayerController2 : MonoBehaviour
 
         if (isDead == false)
         {
-            if(Health<=0)
-            { isDead = true; }
 
             //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
             float yStore = moveDirection.y;

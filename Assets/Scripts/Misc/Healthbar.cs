@@ -16,6 +16,7 @@ public class Healthbar : MonoBehaviour
         UpdateHealthbar();
     }
 
+
     private void UpdateHealthbar()
     {
         float ratio = hitpoint / maxHitpoint;

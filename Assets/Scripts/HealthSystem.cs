@@ -18,17 +18,17 @@ public class HealthSystem : MonoBehaviour
         PC = player.GetComponent<PlayerController2>();
     }
 
-    private void UpdateHealthbar()
+    public void UpdateHealthbar()
     {
         float ratio = hitpoint / maxHitpoint;
         currentHealtbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
         ratioText.text = (ratio * 100).ToString("0") + '%';
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         hitpoint -= damage;
-        if (hitpoint < 0)
+        if (hitpoint <= 0)
         {
             hitpoint = 0;
             Debug.Log("Dead!");
@@ -46,4 +46,5 @@ public class HealthSystem : MonoBehaviour
         }
         UpdateHealthbar();
     }
+ 
 }

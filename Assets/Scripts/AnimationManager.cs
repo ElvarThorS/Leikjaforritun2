@@ -65,10 +65,6 @@ public class AnimationManager : MonoBehaviour
     }
 
     //Fallið sem er kallað á þegar attack hjá spilaranum hittir eitthvað
-    private void OnTriggerEnter(Collider other)
-    {
-        other.gameObject.SetActive(false);
-    }
         
 
             
@@ -79,9 +75,7 @@ public class AnimationManager : MonoBehaviour
         
     
 
-    /*
-     * 
-     *     private void OnTriggerEnter(Collider other)
+ private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger event player");
         if (other.gameObject.tag == "Enemy")
@@ -89,12 +83,11 @@ public class AnimationManager : MonoBehaviour
             Debug.Log("player Hit enemy");
 
             EnemyController EC = other.gameObject.GetComponent<EnemyController>();
-            EC.health -= 1;
+            EC.health -= 50;
 
                 //other.gameObject.SetActive(false);
         }
         
         
     }
-    */
 }

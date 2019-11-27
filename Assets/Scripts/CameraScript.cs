@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform CameraTarget;
-    public GameObject Player;
+    private Transform CameraTarget;
+    private GameObject Player;
     private PlayerController2 PC;
     private float x = 0.0f;
     private float y = 0.0f;
@@ -44,7 +44,11 @@ public class CameraScript : MonoBehaviour
         //Makes the cursor disappear when in play mode
         Cursor.lockState = CursorLockMode.Locked;
 
-        PC = Player.GetComponent<PlayerController2>();
+
+        Player = GameObject.FindWithTag("Player");
+        PC = Player.gameObject.GetComponent<PlayerController2>();
+        CameraTarget = Player.transform;
+        
     }
 
     // Update is called once per frame

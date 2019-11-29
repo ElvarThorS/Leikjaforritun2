@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 133619495338382343}
   - component: {fileID: 133619495338382339}
   m_Layer: 0
-  m_Name: Robot Kyle
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 40
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -269,6 +269,9 @@ MonoBehaviour:
   Anim: {fileID: 133619496947609334}
   pivot: {fileID: 0}
   rotateSpeed: 10
+  isDead: 0
+  slideFriction: 0.3
+  slideSpeed: 6
   playerModel: {fileID: 133619496940313746}
 --- !u!114 &133619495338382339
 MonoBehaviour:
@@ -286,8 +289,6 @@ MonoBehaviour:
   LeftArmCollider: {fileID: 133619495586595390}
   RightLegCollider: {fileID: 133619495952525216}
   LeftLegCollider: {fileID: 133619496292476128}
-  EM: {fileID: 0}
-  Hit: 0
 --- !u!1 &133619496940313888
 GameObject:
   m_ObjectHideFlags: 0

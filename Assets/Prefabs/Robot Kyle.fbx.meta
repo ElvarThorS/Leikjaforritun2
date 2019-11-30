@@ -113,7 +113,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Robot
-    second: {fileID: 2100000, guid: 0aa851515cd3747d6b3b3e461199a2ed, type: 2}
+    second: {fileID: 2100000, guid: 80babe01fa288414b93c2398ca1697c8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

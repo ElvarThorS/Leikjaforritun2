@@ -21,9 +21,6 @@ public class PlayerController2 : MonoBehaviour
     public float rotateSpeed;
     private bool isGrounded;
     public bool isDead = false;
-    public float slideFriction = 0.3f;
-    private Vector3 hitNormal;
-    public float slideSpeed = 6f;
 
     public GameObject playerModel;
 
@@ -93,14 +90,10 @@ public class PlayerController2 : MonoBehaviour
                 moveSpeed = walkSpeed;
                 Anim.SetBool("isSprinting", false);
             }
-            if (!isGrounded)
-            {
-                moveDirection.x = ((1f - hitNormal.y) * hitNormal.x) * slideSpeed;
-                moveDirection.z = ((1f - hitNormal.y) * hitNormal.z) * slideSpeed;
-            }
+            
             moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
             controller.Move(moveDirection * Time.deltaTime);
-            isGrounded = Vector3.Angle(Vector3.up, hitNormal) <= controller.slopeLimit;
+            
 
             //Move the player in different directions based on camera look direction
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
@@ -165,8 +158,5 @@ public class PlayerController2 : MonoBehaviour
         Anim.speed = 0;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        hitNormal = hit.normal;
-    }
+    
 }

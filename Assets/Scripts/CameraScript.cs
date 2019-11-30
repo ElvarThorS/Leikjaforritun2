@@ -1,24 +1,4 @@
-<<<<<<< HEAD
-﻿
 using UnityEngine;
-
-public class CameraScript : MonoBehaviour
-{
-    public Transform Target;
-    public float FollowSpeed;
-    public Vector3 Offset;
-
-    private void FixedUpdate()
-    {
-        Vector3 GoalPosition = Target.position + Offset;
-        Vector3 SmoothedPosition = Vector3.Lerp(transform.position, GoalPosition, FollowSpeed);
-        transform.position = SmoothedPosition;
-
-        
-    }
-}
-=======
-﻿using UnityEngine;
 using System.Collections;
 
 public class CameraScript : MonoBehaviour
@@ -68,7 +48,7 @@ public class CameraScript : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
         PC = Player.gameObject.GetComponent<PlayerController2>();
         CameraTarget = Player.transform;
-        
+
     }
 
     // Update is called once per frame
@@ -87,7 +67,7 @@ public class CameraScript : MonoBehaviour
         }
 
         y = ClampAngle(y, MinViewAngle, MaxViewAngle);
-        Quaternion rotation = Quaternion.Euler(y*-1, x, 0);
+        Quaternion rotation = Quaternion.Euler(y * -1, x, 0);
 
         desireDistance -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * ZoomRate * Mathf.Abs(desireDistance);
         desireDistance = Mathf.Clamp(desireDistance, MinViewDistance, MaxViewDistance);
@@ -159,4 +139,3 @@ public class CameraScript : MonoBehaviour
         return Mathf.Clamp(angle, min, max);
     }
 }
->>>>>>> bb7521c4f21294206e67d3209d119b2d3d1fc728

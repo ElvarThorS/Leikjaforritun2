@@ -7,51 +7,27 @@ public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10f;
 
-<<<<<<< HEAD
-    Transform target;
-    NavMeshAgent agent;
-=======
     public Transform target;
     public NavMeshAgent agent;
 
     public int health = 100;
-    
+
     public Animator anim;
     public float TBA = 1.5f;
     public Collider HitCollider;
 
     public bool isPlayerDead = false;
->>>>>>> bb7521c4f21294206e67d3209d119b2d3d1fc728
 
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-<<<<<<< HEAD
-=======
         HitCollider = HitCollider.GetComponent<CapsuleCollider>();
-        
->>>>>>> bb7521c4f21294206e67d3209d119b2d3d1fc728
+
     }
 
     void Update()
     {
-<<<<<<< HEAD
-        float distance = Vector3.Distance(target.position, transform.position);
-
-        if(distance <= lookRadius)
-        {
-            agent.SetDestination(target.position);
-           
-            if (distance <= agent.stoppingDistance)
-            {
-                //Attack the target
-                FaceTarget();
-            }
-        }
-    }
-    void FaceTarget ()
-=======
 
         if (health <= 0)
         {
@@ -100,7 +76,6 @@ public class EnemyController : MonoBehaviour
         }
     }
     void FaceTarget()
->>>>>>> bb7521c4f21294206e67d3209d119b2d3d1fc728
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -111,8 +86,6 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
-<<<<<<< HEAD
-=======
 
     void Attack()
     {
@@ -126,26 +99,26 @@ public class EnemyController : MonoBehaviour
     }
 
     public void StartEatingEvent()
-        { anim.SetBool("StartEating", true); }
+    { anim.SetBool("StartEating", true); }
 
     public void EnemyDeadEvent()
     { anim.speed = 0; }
 
     private void TakeDamage(int damage)
-        { health -= damage;}
+    { health -= damage; }
 
 
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger Event Enemy");
-        if(other.gameObject.tag == "Player")  
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("Enemy hits player");
             HealthSystem HS = other.gameObject.GetComponent<HealthSystem>();
             HS.TakeDamage(30);
             HS.UpdateHealthbar();
-            if(HS.hitpoint <=0)
+            if (HS.hitpoint <= 0)
             {
                 isPlayerDead = true;
             }
@@ -155,5 +128,4 @@ public class EnemyController : MonoBehaviour
             TakeDamage(50);
         }
     }
->>>>>>> bb7521c4f21294206e67d3209d119b2d3d1fc728
 }

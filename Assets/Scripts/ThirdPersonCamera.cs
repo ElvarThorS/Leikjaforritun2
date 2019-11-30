@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-<<<<<<< HEAD
     private const float Y_ANGLE_MIN = 5.0f;
     private const float Y_ANGLE_MAX = 50.0f;
 
@@ -40,7 +39,6 @@ public class ThirdPersonCamera : MonoBehaviour
         camTransform.position = lookAt.position + rotation * dir;
         camTransform.LookAt(lookAt.position);
     }
-=======
     public Transform target;
 
     public Vector3 CameraOffset;

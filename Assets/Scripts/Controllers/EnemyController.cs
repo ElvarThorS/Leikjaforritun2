@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
 
     public int health = 100;
-    
+
     public Animator anim;
     public float TBA = 1.5f;
     public Collider HitCollider;
@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         HitCollider = HitCollider.GetComponent<CapsuleCollider>();
-        
+
     }
 
     void Update()
@@ -99,26 +99,26 @@ public class EnemyController : MonoBehaviour
     }
 
     public void StartEatingEvent()
-        { anim.SetBool("StartEating", true); }
+    { anim.SetBool("StartEating", true); }
 
     public void EnemyDeadEvent()
     { anim.speed = 0; }
 
     private void TakeDamage(int damage)
-        { health -= damage;}
+    { health -= damage; }
 
 
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger Event Enemy");
-        if(other.gameObject.tag == "Player")  
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("Enemy hits player");
             HealthSystem HS = other.gameObject.GetComponent<HealthSystem>();
             HS.TakeDamage(30);
             HS.UpdateHealthbar();
-            if(HS.hitpoint <=0)
+            if (HS.hitpoint <= 0)
             {
                 isPlayerDead = true;
             }

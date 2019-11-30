@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 410566eebf9a2a449a15cf70d7020f30
+  productGUID: 94fd53fbb19076b44ab3affbde34a5d4
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Karate Kyle
+  productName: NewProject
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -598,6 +598,8 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Build: 1
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -618,9 +620,9 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: a24304eb-515c-46a0-8bb1-1f2a167a5b1a
+  cloudProjectId: 6ce109b8-d835-4d84-8206-75f3578ced5f
   framebufferDepthMemorylessMode: 0
-  projectName: Karate Kyle
+  projectName: NewProject
   organizationId: unity_hbf6bnvqkj7wrw
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

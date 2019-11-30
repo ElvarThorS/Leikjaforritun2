@@ -18,9 +18,9 @@ public class ThirdPersonCamera : MonoBehaviour
     public float minViewAngle;
 
     public bool invertY;
-    void Start ()
+    void Start()
     {
-        if(!useOffsetValues)
+        if (!useOffsetValues)
         {
             CameraOffset = target.position - transform.position;
         }
@@ -28,7 +28,7 @@ public class ThirdPersonCamera : MonoBehaviour
         pivot.transform.position = target.transform.position;
         //pivot.transform.parent = target.transform;
         pivot.transform.parent = null;
-        
+
         //Makes the cursor disappear when in play mode
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -48,20 +48,21 @@ public class ThirdPersonCamera : MonoBehaviour
         if (invertY)
         {
             pivot.Rotate(vertical, 0, 0);
-        } else
+        }
+        else
         {
             pivot.Rotate(-vertical, 0, 0);
         }
 
         //Limit the up/down camera rotation
-        if (pivot.rotation.eulerAngles.x > maxViewAngle  && pivot.rotation.eulerAngles.x < 180f)
+        if (pivot.rotation.eulerAngles.x > maxViewAngle && pivot.rotation.eulerAngles.x < 180f)
         {
             pivot.rotation = Quaternion.Euler(maxViewAngle, 0, 0);
         }
 
-        if(pivot.rotation.eulerAngles.x > 180f && pivot.rotation.eulerAngles.x < 360f+minViewAngle)
+        if (pivot.rotation.eulerAngles.x > 180f && pivot.rotation.eulerAngles.x < 360f + minViewAngle)
         {
-            pivot.rotation = Quaternion.Euler(360f+minViewAngle, 0, 0);
+            pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0, 0);
         }
 
         float desiredYAngle = pivot.eulerAngles.y;
@@ -69,13 +70,13 @@ public class ThirdPersonCamera : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0);
         transform.position = target.position - (rotation * CameraOffset);
 
-        if(transform.position.y < target.position.y)
+        if (transform.position.y < target.position.y)
         {
-            transform.position = new Vector3(transform.position.x, target.position.y -.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, target.position.y - .5f, transform.position.z);
         }
 
         transform.LookAt(target);
     }
 
-    
+
 }

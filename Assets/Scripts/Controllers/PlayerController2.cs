@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController2 : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
         
         if(isDead == true)
         {
@@ -146,6 +152,14 @@ public class PlayerController2 : MonoBehaviour
             }
             //limit/clamp no of clicks between 0 and 3 because you have combo for 3 clicks
             noOfClicks = Mathf.Clamp(noOfClicks, 0, 8);
+        }
+
+        void onCollisionEnter(Collision other)
+        {
+            if(other.gameObject.tag == "Gate")
+            {
+                Debug.Log("Kyyyyle");
+            }
         }
 
         

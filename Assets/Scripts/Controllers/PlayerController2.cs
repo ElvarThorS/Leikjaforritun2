@@ -33,12 +33,12 @@ public class PlayerController2 : MonoBehaviour
     public float timer = 5;
     void Update()
     {
-        
+        /*
         if(Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene("Menu");
         }
-        
+        */
         if(isDead == true)
         {
             Anim.SetBool("isDead", true);

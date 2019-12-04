@@ -12127,7 +12127,12 @@ PrefabInstance:
     - target: {fileID: 2229601841217380239, guid: 59208c4a144a6c24dbf28301cca73e3a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -404.1
+      value: -901
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229601841217380239, guid: 59208c4a144a6c24dbf28301cca73e3a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -631
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59208c4a144a6c24dbf28301cca73e3a, type: 3}
@@ -12143,6 +12148,7 @@ GameObject:
   - component: {fileID: 2013135352}
   - component: {fileID: 2013135351}
   - component: {fileID: 2013135350}
+  - component: {fileID: 2013135353}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -12172,7 +12178,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013135348}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -12222,6 +12228,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013135348}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2013135353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013135348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24fb02302073924fb7e49797a13671e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2023073720
 PrefabInstance:
   m_ObjectHideFlags: 0

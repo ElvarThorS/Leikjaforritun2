@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+
 
     // Update is called once per frame
-    void onCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("aaa");
+        
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("AAA");
+            SceneManager.LoadScene("Level 2");
         }
     }
 }

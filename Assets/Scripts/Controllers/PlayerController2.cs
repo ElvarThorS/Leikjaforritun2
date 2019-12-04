@@ -30,7 +30,7 @@ public class PlayerController2 : MonoBehaviour
         //theRB = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
     }
-
+    public float timer = 5;
     void Update()
     {
         
@@ -42,6 +42,13 @@ public class PlayerController2 : MonoBehaviour
         if(isDead == true)
         {
             Anim.SetBool("isDead", true);
+            
+            
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
 
         
